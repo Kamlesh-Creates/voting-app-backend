@@ -40,12 +40,13 @@ router.post('/login',async(req,res)=>{
         //generate token
         const payload={
             id:user.id,
-          
+            role: user.role,
+            isvoted:user.isvoted
 
         }
         const token=generatetoken(payload);
 
-        res.json({token})
+        res.json({token,role: user.role ,isvoted:user.isvoted})
     } catch (error) {
         console.log(error)
         res.status(500).json({error:"internal server error"})
@@ -85,6 +86,23 @@ res.status(500).json({error:'internal server error'})
     }
 })
 
+// get to get vote status
+  // GET /api/vote/status/:electionId
+router.get('/status/:electionId', jwtauthmiddleware, async (req, res) => {
+  const { electionId } = req.params;
+  const userId = req.user.id;
+
+  try {
+    const vote = await Vote.findOne({ user: userId, election: electionId });
+    if (vote) {
+      return res.json({ hasVoted: true });
+    }
+    return res.json({ hasVoted: false });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
 
 module.exports=router
-//comment add for Testing Purpose V.2.0

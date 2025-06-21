@@ -31,10 +31,16 @@ role:{
     default:'voter',
 
 },
-isvoted:{
-    type:Boolean,
-    default:false
-}
+
+
+
+votes: [
+  {
+    electionId: { type: mongoose.Schema.Types.ObjectId, ref: 'Election' },
+    candidateId: { type: mongoose.Schema.Types.ObjectId, ref: 'Candidate' },
+    votedAt: { type: Date, default: Date.now }
+  }
+]
 })
 
 

@@ -15,7 +15,7 @@ const createAdmin = async () => {
             name: 'Kamlesh Satpute',
             age: 20,
             aadharnumber: 888888888888,
-            password: 'kamlesh@2025',
+            password: process.env.ADMIN_PASSWORD,
             role: 'admin'
         });
 
