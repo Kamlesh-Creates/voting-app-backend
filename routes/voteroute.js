@@ -5,7 +5,7 @@ const {jwtauthmiddleware}=require('./../jwt')
 const User=require('./../models/user')
 
 // Check if user has voted in a specific election
-router.get('/status/:electionId', jwtauthmiddleware, async (req, res) => {
+router.get('/votestatus/:electionId', jwtauthmiddleware, async (req, res) => {
   const { electionId } = req.params;
   const userId = req.user.id;
 
