@@ -8,7 +8,7 @@ const createAdmin=require('./admin')
 const verifyAdmin = require('./verifyadmin');
 
 const corsOptions = {
-  origin:['http://localhost:3000', 'http://192.168.1.8:3000'],
+  origin:"https://voting-app-frontend-psi.vercel.app",
   methods: ['GET', 'POST', 'DELETE', 'PUT'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
