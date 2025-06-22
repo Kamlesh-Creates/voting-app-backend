@@ -4,6 +4,8 @@ const User=require('./../models/user')
 const {jwtauthmiddleware,generatetoken}=require('./../jwt')
 
 router.post('/signup',async (req,res)=>{
+  
+
     try{
     const data=req.body
     const newUser=new User(data);
@@ -28,6 +30,8 @@ console.log(err);
 
 
 router.post('/login',async(req,res)=>{
+  
+
     try {
         //extract the username and password
         const{aadharnumber,password}=req.body;
@@ -54,6 +58,8 @@ router.post('/login',async(req,res)=>{
 })
 
 router.get('/profile',jwtauthmiddleware,async(req,res)=>{
+  
+
     try {
         const userdata=req.user;
         const userid=userdata.id;
@@ -67,6 +73,8 @@ router.get('/profile',jwtauthmiddleware,async(req,res)=>{
 
 //PUT for update the user password
 router.put('/profile/password',jwtauthmiddleware,async (req,res)=>{
+  
+
     try{
   const userId=req.user
   const {currentPassword,newPassword}=req.body
@@ -89,6 +97,8 @@ res.status(500).json({error:'internal server error'})
 // get to get vote status
   // GET /api/vote/status/:electionId
 router.get('/status/:electionId', jwtauthmiddleware, async (req, res) => {
+  
+
   const { electionId } = req.params;
   const userId = req.user.id;
 

@@ -19,6 +19,8 @@
 
     //POST route to add new candidate   
     router.post('/addcandidate',jwtauthmiddleware,async (req,res)=>{
+        
+
         try{
             // if(! await checkAdminRole(req.user.id)){
             //     return res.status(404).json({message:"User not allowed"});
@@ -42,6 +44,8 @@
 
     //PUT route to update the candidate
     router.put('/:candidateId',jwtauthmiddleware,async (req,res)=>{
+        
+
         try{
     if(!(await checkAdminRole(req.user.id))){
                 return res.status(404).json({message:"User Has Not Admin Role"});
@@ -70,6 +74,8 @@
 
     // DELETE the candidate by admin
     router.delete('/deletecandidate/:id', jwtauthmiddleware, async (req, res) => {
+        
+
 
         
     try {
@@ -95,6 +101,8 @@
 
     //POST for vote the candidate through Id
     router.post('/vote/:candidateId', jwtauthmiddleware, async (req, res) => {
+        
+
   const candidateId = req.params.candidateId;
   const userId = req.user.id;
   const { electionId } = req.body;

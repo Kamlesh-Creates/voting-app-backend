@@ -15,7 +15,9 @@ const { jwtauthmiddleware, generatetoken } = require("./../jwt");
     }
     }
 
-router.get("/current", async (req, res) => {
+router.get("/current",jwtauthmiddleware, async (req, res) => {
+  
+
   try {
     const currentElection = await Election.findOne({ isActive: true });
     if (!currentElection) {
@@ -40,6 +42,8 @@ router.get("/data", async (req, res) => {
 });
 
 router.post("/create", jwtauthmiddleware, async (req, res) => {
+  
+
   try {
     const { name, startDate, endDate, description, isActive } = req.body;
 
@@ -71,6 +75,8 @@ router.post("/create", jwtauthmiddleware, async (req, res) => {
 });
 //DELETE the election bt id
 router.delete("/deleteelection/:id", jwtauthmiddleware, async (req, res) => {
+  
+
   try {
     if (!(await checkAdminRole(req.user.id))) {
       return res
@@ -94,6 +100,8 @@ router.delete("/deleteelection/:id", jwtauthmiddleware, async (req, res) => {
 
 //PUT Update the election
     router.put('/update/:electionId',jwtauthmiddleware,async (req,res)=>{
+      
+
         try{
     if(!(await checkAdminRole(req.user.id))){
                 return res.status(404).json({message:"User Has Not Admin Role"});

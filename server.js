@@ -9,13 +9,14 @@ const verifyAdmin = require('./verifyadmin');
 
 const corsOptions = {
   origin: "https://voting-app-frontend-psi.vercel.app",
+  
   methods: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
 };
 
 app.use(cors(corsOptions));
-app.options('*', cors(corsOptions)); 
+
 
 const bodyParser=require('body-parser')
 app.use(bodyParser.json());
