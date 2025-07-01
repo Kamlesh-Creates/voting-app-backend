@@ -38,7 +38,7 @@ const { jwtauthmiddleware } = require("./jwt");
 app.use('/user',userroutes)
 app.use('/candidate',candidateroutes)
 app.use('/election',electionroutes)
-app.use('/vote',voteroute)
+app.use('/votestatus',voteroute)
 
 
 app.get('/verify',jwtauthmiddleware, (req, res) => {
