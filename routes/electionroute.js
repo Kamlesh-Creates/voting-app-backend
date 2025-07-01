@@ -20,6 +20,7 @@ router.get("/current",jwtauthmiddleware, async (req, res) => {
 
   try {
     const currentElection = await Election.findOne({ isActive: true });
+    console.log(currentElection)
     if (!currentElection) {
       return res.status(404).json({ message: "No active election found" });
     }
